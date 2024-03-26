@@ -1,4 +1,4 @@
-from model import Todo, TodoCreate, TodoUpdate, TodoResponse
+from public.todo.models import Todo, TodoCreate, TodoUpdate, TodoResponse
 from fastapi import  Depends, HTTPException, status
 from sqlmodel import Session, select
 from typing import Annotated

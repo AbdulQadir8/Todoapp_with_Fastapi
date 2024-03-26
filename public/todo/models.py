@@ -1,5 +1,6 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
+from datetime import datetime, timezone
 
 
 
@@ -9,6 +10,11 @@ class Todo(SQLModel, table=True):
     body: str 
     status: str
     due_date: datetime
+    project_id: int = Relationship(default=None, foreign_key="project.id")
+    creater_id: int = Relationship(default=None, foreign_key="user.id")
+    assigned_id: int = Relationship(default=None, foreign_key="user.id")
+    time_stamp: datetime = Field(sa_column_kwargs={"default": datetime.now(timezone.utc)})
+
 
 class TodoCreate(SQLModel):
     name: str
