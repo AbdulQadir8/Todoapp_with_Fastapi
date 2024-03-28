@@ -8,7 +8,7 @@ from database import get_dep
 
 
 
-def get_todo(id: int, session: Annotated[Session, Depends(get_dep)]):
+def get_todo(id: int, session: Session = Depends(get_dep)):
     todo = session.get(Todo,id)
     if not todo:
         raise HTTPException(
@@ -18,12 +18,11 @@ def get_todo(id: int, session: Annotated[Session, Depends(get_dep)]):
     return todo
 
 
-def get_todos(session: Annotated[Session, Depends(get_dep)]):
-    statement = select(Todo)
-    todos = session.exec(statement).all()
+def get_todos(offset: int = 0,limit: int =100,session: Session = Depends(get_dep)):
+    todos = session.exec(select(Todo).offset(offset).limit(limit)).all()
     return todos
 
-def create_todo(todo: TodoCreate, session: Annotated[Session, Depends(get_dep)]):
+def create_todo(todo: TodoCreate, session: Session = Depends(get_dep)):
     todo_to_db = Todo.model_validate(todo)
     session.add(todo_to_db)
     session.commit()
@@ -31,7 +30,7 @@ def create_todo(todo: TodoCreate, session: Annotated[Session, Depends(get_dep)])
     return todo_to_db
 
 
-def update_todo(id: int, todo_data: TodoUpdate, session: Annotated[Session, Depends(get_dep)]):
+def update_todo(id: int, todo_data: TodoUpdate, session: Session = Depends(get_dep)):
     todo_to_update = session.get(Todo,id)
     if not todo_to_update:
         raise HTTPException(
@@ -46,7 +45,7 @@ def update_todo(id: int, todo_data: TodoUpdate, session: Annotated[Session, Depe
     session.refresh(todo_to_update)
     return todo_to_update
 
-def delete_todo(id: int, session: Annotated[Session, Depends(get_dep)]):
+def delete_todo(id: int, session: Session = Depends(get_dep)):
     todo_to_delete = session.get(Todo,id)
     if not todo_to_delete:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
