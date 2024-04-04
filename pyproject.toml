@@ -12,6 +12,7 @@ fastapi = "^0.110.0"
 sqlmodel = "^0.0.16"
 uvicorn = {extras = ["standard"], version = "^0.28.0"}
 psycopg2-binary = "^2.9.9"
+streamlit = "^1.32.2"
 
 
 [build-system]

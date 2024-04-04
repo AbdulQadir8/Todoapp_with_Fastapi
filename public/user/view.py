@@ -8,7 +8,7 @@ from public.user.crud import (get_user,
                               create_user, 
                               update_user, 
                               delete_user)
-from public.user.models import UserCreate,UserResponse,UserUpdate,User
+from public.model.models import UserCreate,UserResponse,UserUpdate,User
 
 router = APIRouter()
 

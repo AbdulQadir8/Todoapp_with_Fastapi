@@ -11,7 +11,7 @@ from public.todo.crud import (
     delete_todo
 )
 
-from public.todo.models import TodoCreate, TodoResponse, TodoUpdate, Todo
+from public.model.models import TodoCreate, TodoResponse, TodoUpdate, Todo
 
 router = APIRouter()
 
@@ -23,7 +23,7 @@ def create_a_todo(todo: TodoCreate, session:Session = Depends(get_dep)):
 def get_a_todo(todo_id: int, session:Session = Depends(get_dep)):
     return get_todo(id=todo_id, session=session)
 
-@router.get("/", response_model=list[TodoResponse])
+@router.get("/",response_model=list[TodoResponse])
 def get_all_todos(
     offset: int = 0,
     limit: int= Query(default=100,lte=100),

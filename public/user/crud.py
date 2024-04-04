@@ -1,4 +1,4 @@
-from public.user.models import UserCreate, UserResponse, User, UserUpdate
+from public.model.models import UserCreate, UserResponse, User, UserUpdate
 from typing import Annotated
 from fastapi import Depends, HTTPException, status
 from sqlmodel import Session, select

@@ -1,4 +1,4 @@
-from public.todo.models import Todo, TodoCreate, TodoUpdate, TodoResponse
+from public.model.models import Todo, TodoCreate, TodoUpdate, TodoResponse, Project
 from fastapi import  Depends, HTTPException, status
 from sqlmodel import Session, select
 from typing import Annotated
@@ -19,7 +19,10 @@ def get_todo(id: int, session: Session = Depends(get_dep)):
 
 
 def get_todos(offset: int = 0,limit: int =100,session: Session = Depends(get_dep)):
-    todos = session.exec(select(Todo).offset(offset).limit(limit)).all()
+    statement = select(Todo)
+    todos = session.exec(statement.offset(offset).limit(limit)).all()
+    for todo in todos:
+        print("Todo:",todo) 
     return todos
 
 def create_todo(todo: TodoCreate, session: Session = Depends(get_dep)):

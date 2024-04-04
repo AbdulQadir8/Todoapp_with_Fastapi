@@ -10,7 +10,7 @@ from public.project.crud import (
     update_project, 
     delete_project)
 
-from public.project.models import CreateProject,ProjectResponse,ProjectResponse, ProjectUpdate
+from public.model.models import CreateProject,ProjectResponse,ProjectResponse, ProjectUpdate
 
 router = APIRouter()
 

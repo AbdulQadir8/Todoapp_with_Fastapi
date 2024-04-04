@@ -1,4 +1,4 @@
-from public.project.models  import Project, CreateProject, ProjectUpdate, ProjectResponse
+from public.model.models  import Project, CreateProject, ProjectUpdate, ProjectResponse
 from fastapi import  Depends, HTTPException, status
 from sqlmodel import Session, select
 from typing import Annotated
