@@ -6,13 +6,13 @@ from datetime import datetime, timezone
 
 BASE_URL = "http://0.0.0.0:8080"
 
-st.title("Todo App")
+st.title("Todo App Todos")
 
 def create_todo():
     title = st.text_input("Enter Todo Title")
     description = st.text_area("Enter Todo Description")
     status = st.text_input("Enter Status")
-    project_id = st.number_input("Enter Project ID")
+    project_id = st.number_input("Enter todo ID")
     due_date = datetime.now().isoformat()
     time_stamp = datetime.now().isoformat()
     if st.button("Add Todo"):

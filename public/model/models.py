@@ -23,7 +23,7 @@ class UserCreate(SQLModel):
     birthday: datetime
     phone_number: str
     time_stamp: datetime
-    todos: list["Todo"]
+    # todos: list["Todo"]
 
 
 class UserResponse(SQLModel):
@@ -34,7 +34,7 @@ class UserResponse(SQLModel):
     birthday: datetime
     phone_number: str
     time_stamp: datetime
-    todos: list["Todo"]
+    # todos: list["Todo"]
 
 class UserUpdate(SQLModel):
     user_name: str | None = None
@@ -43,7 +43,7 @@ class UserUpdate(SQLModel):
     birthday: datetime | None = None
     phone_number: str | None = None
     time_stamp: datetime | None = None
-    todos: list["Todo"] | None = None
+    # todos: list["Todo"] | None = None
 
 #Project Class Models
 
@@ -59,7 +59,7 @@ class CreateProject(SQLModel):
     project_name: str
     status: str
     time_stamp: datetime
-    todos: list["Todo"] 
+    # todos: list["Todo"] 
 
     
 
@@ -69,13 +69,13 @@ class ProjectResponse(SQLModel):
     project_name: str
     status: str
     time_stamp: datetime
-    todos: list["Todo"]
+    # todos: list["Todo"]
 
 class ProjectUpdate(SQLModel):
     project_name: str | None = None
     status: str | None = None
     time_stamp: datetime | None = None
-    todos: list["Todo"] | None = None
+    # todos: list["Todo"] | None = None
 
 
 #Todo Class Models 
