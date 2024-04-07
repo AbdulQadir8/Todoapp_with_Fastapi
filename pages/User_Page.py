@@ -43,7 +43,15 @@ def display_users():
             for user in users:
                 st.write(f"Name: {user['user_name']}, Email: {user['user_email']}, Password: {user['user_password']}, Birthday: {user['birthday']}, PhoneNumber: {user['phone_number']}, TimeStamp: {user['time_stamp']}")
 
-if __name__ == "__main__":
+
+def user_page():
     create_user()
     delete_user()
     display_users()
+
+
+
+
+if __name__ == "__main__":
+    user_page()
+    

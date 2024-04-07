@@ -1,6 +1,7 @@
 # streamlit_client.py
 
 import streamlit as st
+import pandas as pd
 import requests
 from datetime import datetime, timezone
 
@@ -36,9 +37,23 @@ def display_projects():
         if response.status_code == 200:
             projects = response.json()
             for project in projects:
-                st.write(f"Title: {project['project_name']}, Status: {project['status']}, TimeStamp: {project['time_stamp']}")
 
-if __name__ == "__main__":
+                df = pd.DataFrame(
+                            project['project_name'],
+                            project['status'],
+                            project['time_stamp'],
+                            columns=["Title","Status","TimeStamp"]
+                      )
+            st.dataframe(df)
+                # st.write(f"Title: {project['project_name']}, Status: {project['status']}, TimeStamp: {project['time_stamp']}")
+
+
+def project_page():
     create_project()
     delete_project()
     display_projects()
+
+
+
+if __name__ == "__main__":
+    project_page()

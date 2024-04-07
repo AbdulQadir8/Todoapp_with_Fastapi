@@ -43,7 +43,12 @@ def display_todos():
             for todo in todos:
                 st.write(f"Title: {todo['name']}, Description: {todo['body']}, Status: {todo['status']}")
 
-if __name__ == "__main__":
+
+def todo_page():
     create_todo()
     delete_todo()
     display_todos()
+
+
+if __name__ == "__main__":
+    todo_page()
